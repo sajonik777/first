@@ -1,0 +1,8 @@
+mkdir -p /project_root/app/models
+mkdir -p /project_root/app/views
+mkdir -p /project_root/app/controllers
+mkdir -p /project_root/tests
+mkdir -p /project_root/docs
+mkdir -p /project_root/config
+mkdir -p /project_root/scripts
+mkdir -p /project_root/logs
