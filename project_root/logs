@@ -6,3 +6,4 @@ mkdir -p /project_root/docs
 mkdir -p /project_root/config
 mkdir -p /project_root/scripts
 mkdir -p /project_root/logs
+\ok
