@@ -1,1 +1,72 @@
-null
+nullimport NaServer
+
+def main():
+    s = NaServer.NaServer("your_netapp_hostname", 1 , 160)
+    s.set_server_type("FILER")
+    s.set_transport_type("HTTPS")
+    s.set_port(443)
+    s.set_style("LOGIN")
+    s.set_admin_user("your_username", "your_password")
+
+    # Get system information
+    system_info = s.invoke("system-get-info")
+    print_system_info(system_info)
+
+    # Get ONTAP version
+    ontap_version = s.invoke("system-get-ontapi-version")
+    print_ontap_version(ontap_version)
+
+    # Get disk array information
+    disk_array = s.invoke("storage-disk-get-iter")
+    print_disk_array(disk_array)
+
+    # Get assembly parts and their serial numbers
+    assembly_parts = s.invoke("environment-sensors-get-iter")
+    print_assembly_parts(assembly_parts)
+
+    # Get controllers data
+    controllers_data = s.invoke("system-get-version")
+    print_controllers_data(controllers_data)
+
+def print_system_info(output):
+    if (output.results_errno() != 0):
+        result = output.results_reason()
+        print("Failed to get system info: %s" % result)
+    else:
+        print("System Information: ")
+        print("System ID: ", output.child_get_string("system-id"))
+        print("System Name: ", output.child_get_string("system-name"))
+        print("System Model: ", output.child_get_string("system-model"))
+        print("System Serial Number: ", output.child_get_string("system-serial-number"))
+
+def print_ontap_version(output):
+    if (output.results_errno() != 0):
+        result = output.results_reason()
+        print("Failed to get ONTAP version: %s" % result)
+    else:
+        print("ONTAP Version: ", output.child_get_string("version"))
+
+def print_disk_array(output):
+    if (output.results_errno() != 0):
+        result = output.results_reason()
+        print("Failed to get disk array: %s" % result)
+    else:
+        print("Disk Array: ")
+        disks = output.child_get("attributes-list").children_get()
+        for disk in disks:
+            print("Disk Name: ", disk.child_get_string("disk-name"))
+            print("Disk UID: ", disk.child_get_string("disk-uid"))
+
+def print_assembly_parts(output):
+    if (output.results_errno() != 0):
+        result = output.results_reason()
+        print("Failed to get assembly parts: %s" % result)
+    else:
+        print("Assembly Parts: ")
+        parts = output.child_get("assembly-parts").children_get()
+        for part in parts:
+            print("Part Name: ", part.child_get_string("part-name"))
+            print("Serial Number: ", part.child_get_string("serial-number"))
+
+if __name__ == "__main__":
+    main()
