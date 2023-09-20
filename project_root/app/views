@@ -1,4 +1,4 @@
-nullimport NaServer
+import NaServer
 
 def main():
     s = NaServer.NaServer("your_netapp_hostname", 1 , 160)
@@ -27,6 +27,18 @@ def main():
     # Get controllers data
     controllers_data = s.invoke("system-get-version")
     print_controllers_data(controllers_data)
+
++   # Get volume information
++   volume_info = s.invoke("volume-get-iter")
++   print_volume_info(volume_info)
+
++   # Get network interface information
++   network_interface_info = s.invoke("net-interface-get-iter")
++   print_network_interface_info(network_interface_info)
+
++   # Get snapshot information
++   snapshot_info = s.invoke("snapshot-get-iter")
++   print_snapshot_info(snapshot_info)
 
 def print_system_info(output):
     if (output.results_errno() != 0):
@@ -67,6 +79,39 @@ def print_assembly_parts(output):
         for part in parts:
             print("Part Name: ", part.child_get_string("part-name"))
             print("Serial Number: ", part.child_get_string("serial-number"))
+
++def print_volume_info(output):
++    if (output.results_errno() != 0):
++        result = output.results_reason()
++        print("Failed to get volume info: %s" % result)
++    else:
++        print("Volume Information: ")
++        volumes = output.child_get("attributes-list").children_get()
++        for volume in volumes:
++            print("Volume Name: ", volume.child_get_string("name"))
++            print("Volume Size: ", volume.child_get_string("size"))
+
++def print_network_interface_info(output):
++    if (output.results_errno() != 0):
++        result = output.results_reason()
++        print("Failed to get network interface info: %s" % result)
++    else:
++        print("Network Interface Information: ")
++        interfaces = output.child_get("attributes-list").children_get()
++        for interface in interfaces:
++            print("Interface Name: ", interface.child_get_string("name"))
++            print("Interface IP: ", interface.child_get_string("ip-address"))
+
++def print_snapshot_info(output):
++    if (output.results_errno() != 0):
++        result = output.results_reason()
++        print("Failed to get snapshot info: %s" % result)
++    else:
++        print("Snapshot Information: ")
++        snapshots = output.child_get("attributes-list").children_get()
++        for snapshot in snapshots:
++            print("Snapshot Name: ", snapshot.child_get_string("name"))
++            print("Snapshot Size: ", snapshot.child_get_string("size"))
 
 if __name__ == "__main__":
     main()
