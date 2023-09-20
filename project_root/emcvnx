@@ -1,0 +1,41 @@
+import subprocess
+import json
+
+# Replace with your EMC VNX IP and naviseccli path
+ip = "192.168.1.100"
+naviseccli_path = "/opt/Navisphere/bin/naviseccli"
+
+# Define the commands to run
+commands = [
+    "getagent",
+    "getsystem",
+    "getdisk",
+    "getlun",
+    "getstoragegroup",
+    "getpool",
+    # Add more commands as needed
+]
+
+# Initialize a dictionary to hold the data
+data = {}
+
+# Run each command and capture the output
+for command in commands:
+    result = subprocess.run([naviseccli_path, "-h", ip, command], capture_output=True, text=True)
+    output = result.stdout
+
+    # Parse the output into lines and fields
+    lines = output.split("\n")
+    for line in lines:
+        fields = line.split(":")
+        if len(fields) == 2:
+            key = fields[0].strip()
+            value = fields[1].strip()
+            data[key] = value
+
+# Convert the data to JSON
+json_data = json.dumps(data)
+
+# Save the JSON data to a file
+with open("output.json", "w") as f:
+    f.write(json_data)
