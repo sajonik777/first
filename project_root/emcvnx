@@ -36,6 +36,7 @@ for command in commands:
 # Convert the data to JSON
 json_data = json.dumps(data)
 
+
 # Save the JSON data to a file
 with open("output.json", "w") as f:
     f.write(json_data)
