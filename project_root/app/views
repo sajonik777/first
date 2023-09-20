@@ -113,5 +113,14 @@ def print_snapshot_info(output):
             print("Snapshot Name: ", snapshot.child_get_string("name"))
             print("Snapshot Size: ", snapshot.child_get_string("size"))
 
+def print_controllers_data(output):
+    if (output.results_errno() != 0):
+        result = output.results_reason()
+        print("Failed to get controllers data: %s" % result)
+    else:
+        print("Controllers Data: ")
+        print("Version: ", output.child_get_string("version"))
+        print("Version Tuple: ", output.child_get_string("version-tuple"))
+
 if __name__ == "__main__":
     main()
