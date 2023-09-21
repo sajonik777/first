@@ -1,8 +1,8 @@
 import subprocess
 import json
 
-# Replace with your EMC VNX IP and naviseccli path
-ip = "192.168.1.100"
+# Replace with your EMC VNX IPs and naviseccli path
+ips = ["192.168.1.100", "192.168.1.101", "192.168.1.102"]  # Add more IPs as needed
 naviseccli_path = "/opt/Navisphere/bin/naviseccli"
 
 # Define the commands to run
@@ -13,30 +13,64 @@ commands = [
     "getlun",
     "getstoragegroup",
     "getpool",
-    # Add more commands as needed
+    "getport",
+    "getsp",
+    "getcache",
+    "getlog",
+    "getarray",
+    "getmirrorview",
+    "getsnapsure",
+    "getsnapview",
+    "getsanlun",
+    "getnaspool",
+    "getnasvolume",
+    "getnasvdm",
+    "getnasinterface",
+    "getnascheckpoint"
 ]
+
+# getagent - Retrieves agent information.
+# getsystem - Retrieves system information.
+# getdisk - Retrieves disk information.
+# getlun - Retrieves LUN information.
+# getstoragegroup - Retrieves storage group information.
+# getpool - Retrieves pool information.
+# getport - Retrieves port information.
+# getsp - Retrieves service processor information.
+# getcache - Retrieves cache information.
+# getlog - Retrieves log information.
+# getarray - Retrieves array information.
+# getmirrorview - Retrieves MirrorView information.
+# getsnapsure - Retrieves SnapSure information.
+# getsnapview - Retrieves SnapView information.
+# getsanlun - Retrieves SAN LUN information.
+# getnaspool - Retrieves NAS pool information.
+# getnasvolume - Retrieves NAS volume information.
+# getnasvdm - Retrieves NAS VDM information.
+# getnasinterface - Retrieves NAS interface information.
+# getnascheckpoint - Retrieves NAS checkpoint information.
 
 # Initialize a dictionary to hold the data
 data = {}
 
-# Run each command and capture the output
-for command in commands:
-    result = subprocess.run([naviseccli_path, "-h", ip, command], capture_output=True, text=True)
-    output = result.stdout
+# Run each command for each IP and capture the output
+for ip in ips:
+    data[ip] = {}
+    for command in commands:
+        result = subprocess.run([naviseccli_path, "-h", ip, command], capture_output=True, text=True)
+        output = result.stdout
 
-    # Parse the output into lines and fields
-    lines = output.split("\n")
-    for line in lines:
-        fields = line.split(":")
-        if len(fields) == 2:
-            key = fields[0].strip()
-            value = fields[1].strip()
-            data[key] = value
+        # Parse the output into lines and fields
+        lines = output.split("\n")
+        for line in lines:
+            fields = line.split(":")
+            if len(fields) == 2:
+                key = fields[0].strip()
+                value = fields[1].strip()
+                data[ip][key] = value
 
-# Convert the data to JSON
-json_data = json.dumps(data)
-
-
-# Save the JSON data to a file
-with open("output.json", "w") as f:
-    f.write(json_data)
+# Convert the data to JSON and Save the JSON data to a file for each IP
+for ip, ip_data in data.items():
+    json_data = json.dumps(ip_data)
+    with open(f"{ip}_output.json", "w") as f:
+        f.write(json_data)
