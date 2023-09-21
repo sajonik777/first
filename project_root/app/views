@@ -1,3 +1,5 @@
+from flask import Flask, jsonify
+import json
 import os
 import sys
 
@@ -7,6 +9,9 @@ sys.path.append(current_directory)
 
 import NaServer
 
+app = Flask(__name__)
+
+@app.route('/')
 def main():
     s = NaServer.NaServer("your_netapp_hostname", 1 , 160)
     s.set_server_type("FILER")
@@ -17,117 +22,139 @@ def main():
 
     # Get system information
     system_info = s.invoke("system-get-info")
-    print_system_info(system_info)
 
     # Get ONTAP version
     ontap_version = s.invoke("system-get-ontapi-version")
-    print_ontap_version(ontap_version)
 
     # Get disk array information
     disk_array = s.invoke("storage-disk-get-iter")
-    print_disk_array(disk_array)
 
     # Get assembly parts and their serial numbers
     assembly_parts = s.invoke("environment-sensors-get-iter")
-    print_assembly_parts(assembly_parts)
 
     # Get controllers data
     controllers_data = s.invoke("system-get-version")
-    print_controllers_data(controllers_data)
 
     # Get volume information
     volume_info = s.invoke("volume-get-iter")
-    print_volume_info(volume_info)
 
     # Get network interface information
     network_interface_info = s.invoke("net-interface-get-iter")
-    print_network_interface_info(network_interface_info)
 
     # Get snapshot information
     snapshot_info = s.invoke("snapshot-get-iter")
-    print_snapshot_info(snapshot_info)
+
+    # Collect all data into a dictionary
+    data = {
+        "system_info": print_system_info(system_info),
+        "ontap_version": print_ontap_version(ontap_version),
+        "disk_array": print_disk_array(disk_array),
+        "assembly_parts": print_assembly_parts(assembly_parts),
+        "controllers_data": print_controllers_data(controllers_data),
+        "volume_info": print_volume_info(volume_info),
+        "network_interface_info": print_network_interface_info(network_interface_info),
+        "snapshot_info": print_snapshot_info(snapshot_info),
+    }
+
+    return jsonify(data)
 
 def print_system_info(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get system info: %s" % result)
+        return {"error": "Failed to get system info: %s" % result}
     else:
-        print("System Information: ")
-        print("System ID: ", output.child_get_string("system-id"))
-        print("System Name: ", output.child_get_string("system-name"))
-        print("System Model: ", output.child_get_string("system-model"))
-        print("System Serial Number: ", output.child_get_string("system-serial-number"))
+        return {
+            "System ID": output.child_get_string("system-id"),
+            "System Name": output.child_get_string("system-name"),
+            "System Model": output.child_get_string("system-model"),
+            "System Serial Number": output.child_get_string("system-serial-number"),
+        }
 
 def print_ontap_version(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get ONTAP version: %s" % result)
+        return {"error": "Failed to get ONTAP version: %s" % result}
     else:
-        print("ONTAP Version: ", output.child_get_string("version"))
+        return {"ONTAP Version": output.child_get_string("version")}
 
 def print_disk_array(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get disk array: %s" % result)
+        return {"error": "Failed to get disk array: %s" % result}
     else:
-        print("Disk Array: ")
         disks = output.child_get("attributes-list").children_get()
+        disk_array = []
         for disk in disks:
-            print("Disk Name: ", disk.child_get_string("disk-name"))
-            print("Disk UID: ", disk.child_get_string("disk-uid"))
+            disk_array.append({
+                "Disk Name": disk.child_get_string("disk-name"),
+                "Disk UID": disk.child_get_string("disk-uid")
+            })
+        return {"Disk Array": disk_array}
 
 def print_assembly_parts(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get assembly parts: %s" % result)
+        return {"error": "Failed to get assembly parts: %s" % result}
     else:
-        print("Assembly Parts: ")
         parts = output.child_get("assembly-parts").children_get()
+        assembly_parts = []
         for part in parts:
-            print("Part Name: ", part.child_get_string("part-name"))
-            print("Serial Number: ", part.child_get_string("serial-number"))
+            assembly_parts.append({
+                "Part Name": part.child_get_string("part-name"),
+                "Serial Number": part.child_get_string("serial-number")
+            })
+        return {"Assembly Parts": assembly_parts}
 
 def print_volume_info(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get volume info: %s" % result)
+        return {"error": "Failed to get volume info: %s" % result}
     else:
-        print("Volume Information: ")
         volumes = output.child_get("attributes-list").children_get()
+        volume_info = []
         for volume in volumes:
-            print("Volume Name: ", volume.child_get_string("name"))
-            print("Volume Size: ", volume.child_get_string("size"))
+            volume_info.append({
+                "Volume Name": volume.child_get_string("name"),
+                "Volume Size": volume.child_get_string("size")
+            })
+        return {"Volume Information": volume_info}
 
 def print_network_interface_info(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get network interface info: %s" % result)
+        return {"error": "Failed to get network interface info: %s" % result}
     else:
-        print("Network Interface Information: ")
         interfaces = output.child_get("attributes-list").children_get()
+        network_interface_info = []
         for interface in interfaces:
-            print("Interface Name: ", interface.child_get_string("name"))
-            print("Interface IP: ", interface.child_get_string("ip-address"))
+            network_interface_info.append({
+                "Interface Name": interface.child_get_string("name"),
+                "Interface IP": interface.child_get_string("ip-address")
+            })
+        return {"Network Interface Information": network_interface_info}
 
 def print_snapshot_info(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get snapshot info: %s" % result)
+        return {"error": "Failed to get snapshot info: %s" % result}
     else:
-        print("Snapshot Information: ")
         snapshots = output.child_get("attributes-list").children_get()
+        snapshot_info = []
         for snapshot in snapshots:
-            print("Snapshot Name: ", snapshot.child_get_string("name"))
-            print("Snapshot Size: ", snapshot.child_get_string("size"))
+            snapshot_info.append({
+                "Snapshot Name": snapshot.child_get_string("name"),
+                "Snapshot Size": snapshot.child_get_string("size")
+            })
+        return {"Snapshot Information": snapshot_info}
 
 def print_controllers_data(output):
     if (output.results_errno() != 0):
         result = output.results_reason()
-        print("Failed to get controllers data: %s" % result)
+        return {"error": "Failed to get controllers data: %s" % result}
     else:
-        print("Controllers Data: ")
-        print("Version: ", output.child_get_string("version"))
-        print("Version Tuple: ", output.child_get_string("version-tuple"))
+        return {
+            "Version": output.child_get_string("version"),
+            "Version Tuple": output.child_get_string("version-tuple")
+        }
 
-if __name__ == "__main__":
-    main()
+app.run(host='127.0.0.1', port=5000, debug=True)
