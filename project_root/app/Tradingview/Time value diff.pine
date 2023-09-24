@@ -1,0 +1,22 @@
+//@version=5
+indicator("Time value Premium", overlay=true)
+
+// Input for the underlying asset symbol and color
+underlyingAsset = input.symbol(title="Underlying Asset", defval="NASDAQ:NDX")
+colorInput = input.color(title="Color", defval=color.blue)
+
+// Input for the color of the number
+numberColor = input.color(title="Number Color", defval=color.red)
+
+// Get the price data for the underlying asset
+underlyingPrice = request.security(underlyingAsset, "D", close)
+
+// Calculate the percent difference between the current asset's price and the underlying asset's price
+percentDiff = ((close - underlyingPrice) / underlyingPrice) * 100
+
+// Plot the percent difference
+plot(percentDiff, title="Percent Difference", color=colorInput)
+
+// Create a label to display the percentDiff above the last bar
+if barstate.islast
+    label.new(x=bar_index, y=high, text=str.tostring(math.round(percentDiff * 10) / 10) + "%", color=numberColor, yloc=yloc.abovebar)
