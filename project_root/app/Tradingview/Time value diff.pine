@@ -3,10 +3,12 @@ indicator("Time value Premium", overlay=true)
 
 // Input for the underlying asset symbol and color
 underlyingAsset = input.symbol(title="Underlying Asset", defval="NASDAQ:NDX")
-colorInput = input.color(title="Color", defval=color.blue)
 
 // Input for the color of the number
-numberColor = input.color(title="Number Color", defval=color.red)
+numberColor = input.color(title="Number Color", defval=color.white)
+
+// Input for the color of the plot and label
+colorInput = input.color(title="Color", defval=color.black)
 
 // Get the price data for the underlying asset
 underlyingPrice = request.security(underlyingAsset, "D", close)
