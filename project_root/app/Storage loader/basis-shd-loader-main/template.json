@@ -1,0 +1,21 @@
+{
+    "capacityGb": 1000,
+    "contextId": "test",
+    "id": "STU-Test_Loader_06",
+    "lifecycleStatus": "testing",
+    "lifecycleStatusDate": "2023-08-23T13:23:00.000Z",
+    "ownerSystem": "test",
+    "raidType": "raid_1",
+    "redundancy": "true",
+    "redundancyClass": "standard",
+    "remark": "test",
+    "rootVolume": "true",
+    "snapshotSchedule": "test",
+    "snapshotSizeGb": 900,
+    "snapshotUsedGb": 900,
+    "sourceId": "test",
+    "sourceSystem": "COMMAND",
+    "usedGb": 900,
+    "visibleId": "STU-Test_Loader_06",
+    "volumeType": "NFS"
+  }
