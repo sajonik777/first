@@ -1,0 +1,62 @@
+.main-header .logo {
+    padding: 0;
+}
+.main-header .logo .logo-lg img {
+    width: 120px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.main-header .logo .logo-mini img {
+    width: 24px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.main-header .sidebar-toggle {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.main-header .sidebar-toggle:before {
+    content: none;
+}
+
+.navbar .nav > li > a {
+    padding: 13px 15px 13px;
+    margin: 0;
+}
+
+.navbar .nav > li.dropdown.open > a {
+    border-top: 3px solid var(--color-main-dark);
+}
+
+.dropdown-menu > li > a i {
+    margin: 0 4px 0 0;
+}
+
+.main-header .navbar-form {
+    float: left;
+    margin: 5px 0 0;
+}
+
+.main-header .navbar-form .input-append input {
+    border: none;
+    padding: 5px 12px 5px 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    box-shadow: none;
+    outline: none;
+}
+.main-header .navbar-form .input-append button {
+    line-height: 26px;
+    border: 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.main-header .navbar-form .input-append input::placeholder {
+    color: #FFFFFF;
+    opacity: 1;
+}

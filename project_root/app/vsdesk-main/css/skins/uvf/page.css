@@ -1,0 +1,24 @@
+.page-header i {
+    margin: 0 8px 0 0;
+}
+.dtpicker2 {
+    left: 0;
+}
+.dtpicker2::before,
+.dtpicker::before {
+    content: '';
+    background: transparent url("/images/icons/calendar-solid.svg") center / cover no-repeat;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.dtpicker2::before {
+    top: 40%;
+}
+.dtpicker::before {
+    top: 50%;
+}

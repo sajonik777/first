@@ -1,0 +1,1 @@
+{"charset":"utf8","connectionString":"mysql:host=localhost;dbname=univefservicedesk","username":"root","password":"P@ssw0rd"}

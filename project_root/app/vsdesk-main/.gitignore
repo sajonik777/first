@@ -1,0 +1,16 @@
+# /assets/
+# .idea/
+# .git/
+# .phpintel/
+# media/
+# protected/runtime/
+# uploads/
+# protected/_backup/
+# protected/commands/*.pid
+# /protected/config/*.inc
+# protected/config/dbconfig.inc
+# protected/data/installer.lock
+# ws/*.txt
+# ws/*.html
+# ws/*.pid
+# /update_log.txt

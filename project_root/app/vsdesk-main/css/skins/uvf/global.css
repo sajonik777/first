@@ -1,0 +1,35 @@
+body,
+h1, h2, h3, h4, h5, h6,
+p, li,
+span, a {
+    font-family: Pragmatica, sans-serif;
+}
+
+body,
+.login-page, .register-page {
+    background: var(--color-grey-medium);
+}
+
+.main-header {
+    background: var(--color-main);
+}
+
+.main-footer:after {
+    content: '';
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+.content-wrapper, .right-side {
+    background: var(--color-grey-light);
+}
+
+.breadcrumb > li > .divider {
+    display: none;
+}
+.content-header > .breadcrumb > li + li::before {
+    content: '/';
+    margin: 0;
+    padding: 0 5px;
+}

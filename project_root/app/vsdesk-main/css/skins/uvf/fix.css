@@ -1,0 +1,33 @@
+.dtpicker {
+    left: 0;
+}
+.icon-th {
+    background: transparent url(/images/icons/calendar-solid.svg) center / cover no-repeat;
+}
+
+.dtpicker3::before {
+    background: transparent url(/images/icons/calendar-solid.svg) center / contain no-repeat;
+    display: block;
+    height: 18px;
+    width: 18px;
+    left: 23px;
+    top: 7px;
+}
+.dtpicker::before {
+    top: 10px;
+    left: 8px;
+    transform: translate(0, 0);
+}
+
+.daterangepicker .ranges {
+    width: 180px;
+}
+
+.redactor-box.redactor-styles-on .redactor-toolbar {
+    z-index: 1;
+}
+
+.empty-history:before,
+.empty-history #history-grid:before {
+    content: none;
+}

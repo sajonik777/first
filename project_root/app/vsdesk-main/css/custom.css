@@ -1,0 +1,401 @@
+.attached_files-wrap, .fixed-wrap {
+    max-height: 400px;
+    overflow: auto
+}
+
+.sublinks li a {
+    margin-left: 20px;
+    background-color: transparent !important
+}
+
+.checkbox input[type=checkbox] {
+    margin-left: -23px !important;
+    margin-top: 2px !important;
+    opacity: 1 !important
+}
+
+.btn-xs{
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.pull-right {
+    float: right!important;
+}
+
+.color-selector input, .notify {
+    opacity: 0
+}
+
+.notify.error {
+    background: #ed5564
+}
+
+.notify.success {
+    background: #43AC6E
+}
+
+.notify {
+    background: #000;
+    position: fixed;
+    right: -300px;
+    bottom: 20px;
+    padding: 10px 25px;
+    margin: 0 15px;
+    color: #FFF;
+    font-weight: 600;
+    z-index: 999;
+    border-radius: 2px
+}
+
+.flow-list, .flow-view, .flow_task {
+    position: relative
+}
+
+
+.bgC1, .bgC10, .bgC11, .bgC12, .bgC13, .bgC14, .bgC2, .bgC3, .bgC4, .bgC5, .bgC6, .bgC7, .bgC8, .bgC9 {
+    color: #FFF !important
+}
+
+.avatar {
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%
+}
+
+.morecontent span {
+    display: none
+}
+
+.morelink {
+    display: block
+}
+
+.docbox {
+    background: #FFF;
+    box-shadow: 0 0 6px #b5b5b5;
+    margin-top: 20px;
+    min-height: 500px;
+    border: 1px solid #b5b5b5
+}
+
+.color-selector {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 10px
+}
+
+.color-selector input:hover {
+    cursor: pointer
+}
+
+.color-selector.selected {
+    box-shadow: 0 0 0 2px #444
+}
+
+.bgC1 {
+    background: #D870AD !important;
+    border: 1px solid #D870AD !important
+}
+
+.bgC2 {
+    background: #3BBEB0 !important;
+    border: 1px solid #3BBEB0 !important
+}
+
+.bgC3 {
+    background: #3BB85D !important;
+    border: 1px solid #3BB85D !important
+}
+
+.bgC4 {
+    background: #B1C252 !important;
+    border: 1px solid #B1C252 !important
+}
+
+.bgC5 {
+    background: #F5BA42 !important;
+    border: 1px solid #F5BA42 !important
+}
+
+.bgC6 {
+    background: #F59B43 !important;
+    border: 1px solid #F59B43 !important
+}
+
+.bgC7 {
+    background: #E3643E !important;
+    border: 1px solid #E3643E !important
+}
+
+.bgC8 {
+    background: #D9434E !important;
+    border: 1px solid #D9434E !important
+}
+
+.bgC9 {
+    background: #A5ADB8 !important;
+    border: 1px solid #A5ADB8 !important
+}
+
+.bgC10 {
+    background: #7277D5 !important;
+    border: 1px solid #7277D5 !important
+}
+
+.bgC11 {
+    background: #31353C !important;
+    border: 1px solid #31353C !important
+}
+
+.bgC12 {
+    background: #3BB1D9 !important;
+    border: 1px solid #3BB1D9 !important
+}
+
+.bgC13 {
+    background: #4B8CDC !important;
+    border: 1px solid #4B8CDC !important
+}
+
+.bgC14 {
+    background: #B276D8 !important;
+    border: 1px solid #B276D8 !important
+}
+
+.CustumEventText {
+    font-size: 11px;
+    padding: 2px
+}
+
+.todayLog {
+    background: #FFFAE9
+}
+
+.yesterdayLog {
+    background: #FCFAF3
+}
+
+.otherdayLog {
+    background: #FFF
+}
+
+.logDatetime {
+    font-size: 12px;
+    color: #999
+}
+
+.message-wrap {
+    box-shadow: 0 0 4px #999;
+    -webkit-border-radius: 2px;
+    margin-bottom: 10px
+}
+
+.send-wrap {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    background: #f8f8f8
+}
+
+.attached_files-wrap {
+    padding: 0
+}
+
+.sl-left-circle {
+    margin-left: -6px !important;
+    margin-top: -2px !important
+}
+
+.fn-gantt .bar.gantt-timeline .fn-label {
+    overflow: visible;
+    font-size: 21px;
+    color: #8067B7
+}
+
+.fn-gantt .bar.gantt-timeline {
+    height: 17px;
+    background: 0 0;
+    margin-top: 1px;
+    border-top: 2px solid #F93;
+    border-radius: 0;
+    overflow: visible
+}
+
+.fn-gantt .bar.gantt-timeline .fn-label:after, .fn-gantt .bar.gantt-timeline .fn-label:before {
+    content: "\f175";
+    color: #F93;
+    margin-top: -1px;
+    display: inline-block;
+    text-rendering: auto;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.fn-gantt .bar.gantt-timeline .fn-label:before {
+    float: left;
+    margin-left: -3px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased
+}
+
+.fn-gantt .bar.gantt-timeline .fn-label:after {
+    float: right;
+    margin-right: -4px;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased
+}
+
+.sub_gantt_text {
+    font-weight: 300
+}
+
+.badgetopbar {
+    min-width: 10px;
+    padding: 1px 5px;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #FF7979;
+    border-radius: 7px;
+    margin-left: -14px
+}
+
+.customicon {
+    font-size: 15px !important
+}
+
+.unread-notification {
+    background: #FFFAE9
+}
+
+.focus_onmove {
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    background-color: #EEE !important
+}
+
+.focus_placeholder {
+    height: 4em;
+    border: 2px dashed #DDD;
+    margin-bottom: 10px
+}
+
+.empty_column {
+    text-align: center;
+    color: #CCC;
+    text-transform: uppercase;
+    line-height: 50px;
+    font-size: 13px;
+    padding: 5px
+}
+
+.flow-view {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    min-height: 410px
+}
+
+.flow-content {
+    border: 1px solid #EEE;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    #padding-left: 10px
+}
+
+.flow-view .flow-lists {
+    display: block;
+    position: relative;
+    clear: both;
+    padding-bottom: 40px
+}
+.flow-lists li {
+    list-style: none;
+}
+
+.flow-lists ul {
+    list-style: none;
+}
+
+
+.flow-list {
+    width: 275px;
+    margin-right: 10px;
+    height: 100%;
+    float: left;
+    border-radius: 3px;
+    padding: 5px
+}
+
+.flow-list .tasklist {
+    background-color: #EEE;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px
+}
+
+.tasklist {
+    width: auto;
+    margin: 10px 0
+}
+
+.flow-list .list-tasks {
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.flow_task_scrollbar {
+    -webkit-overflow-scrolling: touch;
+    padding-left: 4px;
+    padding-right: 4px
+}
+
+.list-tasks li {
+    line-height: 20px !important
+}
+
+.atask {
+    margin-bottom: 5px;
+    word-wrap: break-word
+}
+
+.flow_task {
+    margin-bottom: 4px !important;
+    padding: 7px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    background-color: #FFF;
+    overflow-y: auto;
+}
+
+.table-responsive {
+    overflow-x: initial;
+}
+
+.img-circle-sm {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.img-circle-md {
+    border-radius: 50%;
+    width: 48px !important;
+    height: 48px !important;
+}

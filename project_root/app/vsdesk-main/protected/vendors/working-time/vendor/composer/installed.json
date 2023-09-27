@@ -1,0 +1,55 @@
+[
+    {
+        "name": "gt-volk/working-time",
+        "version": "1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/GT-Volk/working-time.git",
+            "reference": "7ec6ead856ea72582535f1c123dac0752f33d4b9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/GT-Volk/working-time/zipball/7ec6ead856ea72582535f1c123dac0752f33d4b9",
+            "reference": "7ec6ead856ea72582535f1c123dac0752f33d4b9",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.2"
+        },
+        "time": "2018-12-03 18:47:02",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "gtvolk\\WorkingTime\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Aleksandr Bushlanov",
+                "email": "alex@bushlanov.pro",
+                "homepage": "http://bushlanov.pro",
+                "role": "Developer"
+            }
+        ],
+        "description": "Calculates the amount of time taking into account the working hours and days off",
+        "homepage": "https://github.com/GT-Volk/working-time",
+        "keywords": [
+            "gt-volk",
+            "hours",
+            "opening",
+            "schedule",
+            "time",
+            "working",
+            "working-time"
+        ]
+    }
+]

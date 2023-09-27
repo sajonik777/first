@@ -1,0 +1,32 @@
+.ui-sortable {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;  
+    text-align: left;
+}
+
+.ui-sortable li { 
+    cursor: move;
+    padding: 2px;
+}
+
+.ui-sortable li label { 
+    display: inline; 
+    margin-bottom: auto; 
+    cursor: move; 
+}  
+
+
+.ui-sortable li input[type="checkbox"] { 
+    display: inline; 
+    margin-top: 3px; 
+    margin-bottom: auto; 
+    cursor: default;
+}  
+
+.ecolumns-link {
+    float: right;
+    margin-left: 10px;
+}
+    
+    
