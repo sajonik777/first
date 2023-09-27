@@ -1,3 +1,1 @@
 # first
-\\OK
-\yes
