@@ -4,7 +4,7 @@ from model import split_data, train_model, evaluate_model
 
 def main():
     # Load data
-    data = load_data('/path/to/data.csv')
+    data = load_data('C:/Users/admin/Repository/first/project_root/app/ML-utilization/HDD-utilization.csv')
 
     # Preprocess data
     data = preprocess_data(data)
