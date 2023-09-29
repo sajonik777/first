@@ -4,7 +4,7 @@ from model import split_data, train_model, evaluate_model
 
 def main():
     # Load data
-    data = load_data('HDD-utilization.csv')
+    data = load_data('controller.json')
 
     # Preprocess data
     data = preprocess_data(data)
