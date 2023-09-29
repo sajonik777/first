@@ -4,7 +4,7 @@ from model import split_data, train_model, evaluate_model
 
 def main():
     # Load data
-    data = load_data('C:/Users/admin/Repository/first/project_root/app/ML-utilization/HDD-utilization.csv')
+    data = load_data('HDD-utilization.csv')
 
     # Preprocess data
     data = preprocess_data(data)
@@ -13,7 +13,7 @@ def main():
     features = select_features(data)
 
     # Split data
-    X_train, X_test, y_train, y_test = split_data(features, data['target'])
+    X_train, X_test, y_train, y_test = split_data(features, data['B'])
 
     # Train model
     model = train_model(X_train, y_train)
